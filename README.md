@@ -1,6 +1,6 @@
 ### The varos
 
-## 1. Csapat: {feladat}
+## 1. Csapat: {szigma}
 
 ## 2. Csapat: {feladat}
 
