@@ -5,5 +5,11 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <StartupObject>Varos.Program</StartupObject>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="lotto\lotto\obj\**\*.cs" />
+        <Compile Remove="lotto\lotto\bin\**\*.cs" />
+    </ItemGroup>
 </Project>
