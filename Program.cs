@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var ui = new MainConsoleUi();
+        ui.Run();
     }
 }
