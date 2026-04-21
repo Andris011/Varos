@@ -1,0 +1,14 @@
+C:\Users\user\source\repos\lotto\lotto\bin\Debug\net8.0\lotto.exe
+C:\Users\user\source\repos\lotto\lotto\bin\Debug\net8.0\lotto.deps.json
+C:\Users\user\source\repos\lotto\lotto\bin\Debug\net8.0\lotto.runtimeconfig.json
+C:\Users\user\source\repos\lotto\lotto\bin\Debug\net8.0\lotto.dll
+C:\Users\user\source\repos\lotto\lotto\bin\Debug\net8.0\lotto.pdb
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.AssemblyInfo.cs
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.dll
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\refint\lotto.dll
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.pdb
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\lotto.genruntimeconfig.cache
+C:\Users\user\source\repos\lotto\lotto\obj\Debug\net8.0\ref\lotto.dll
