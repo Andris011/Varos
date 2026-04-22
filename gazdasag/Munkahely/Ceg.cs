@@ -29,7 +29,7 @@ namespace Varos.gazdasag.Munkahely
             double profit = munkavallalok.Count * profitMunkavallora;
 
             // -10% <-> +10% bukás/nyereség véletlenszerűen
-            profit *= random.NextDouble() * 0.2 - 0.1;
+            profit *= 1 + (random.NextDouble() * 0.2 - 0.1);
 
             return (int) profit;
         }
