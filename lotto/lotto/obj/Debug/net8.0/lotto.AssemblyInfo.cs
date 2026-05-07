@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lotto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e1b0846403580da6391ec88e988e253b4da297d")]
 [assembly: System.Reflection.AssemblyProductAttribute("lotto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lotto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

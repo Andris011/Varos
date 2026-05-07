@@ -8,10 +8,9 @@
             TesztEmber e=new TesztEmber("Nagy Laci",10000);
             l.TarKiir();
             Console.WriteLine(e);
-            l.SzelvenytVesz(e, 1);
+            l.SzelvenytVesz(e, 2);
             Console.WriteLine(e);
-            l.TarKiir();
-
+            l.TarKiir(); 
             
 
         }
