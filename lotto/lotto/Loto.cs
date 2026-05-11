@@ -80,7 +80,7 @@ namespace lotto
         {
 
             Console.Clear();
-
+             
             foreach (var item in tar)
             {
                 TesztEmber ember =item.Key;
