@@ -52,6 +52,7 @@ namespace lotto
 
         public void TarKiir()
         {
+            
             Console.Clear();
             Console.WriteLine("-----------------Rendszerben lévő pénz-----------------------");
             Console.WriteLine(this.osszpenz);
@@ -87,6 +88,7 @@ namespace lotto
 
                     for (int i = 0; i < szelvenyek; i++)
                     {
+                        Console.WriteLine("roll");
                         if (osszpenz <= 0) break;
 
                         int roll = rnd.Next(10000);
