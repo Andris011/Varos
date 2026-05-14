@@ -1,4 +1,6 @@
-﻿namespace Varos;
+﻿using Varos.esemenyek.foldrenges;
+
+namespace Varos;
 
 class Program
 {
@@ -19,6 +21,7 @@ class Program
         Console.WriteLine("Igazán ki lehetett volna jelölni egy vezetőt a projektnek");
         Console.WriteLine("Enter hogy kilépj");
         Console.ReadLine();
+
 
     }
 }
