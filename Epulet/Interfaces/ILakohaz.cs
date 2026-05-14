@@ -7,5 +7,4 @@ public interface ILakohaz
     // float Lakber { get; set; }
     int MaxLakokSzama { get; set; }
     int SzobakSzama { get; set; }
-    double Rezsi { get; set; }
 }

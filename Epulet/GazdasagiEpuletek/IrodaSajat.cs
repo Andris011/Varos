@@ -5,12 +5,12 @@ namespace Varos.Epulet.GazdasagiEpuletek;
 public class IrodaSajat : Epulet, IMunkahely
 {
     private string nev;
-    private int alkalmazottakSzama;
+    private int maxAlkalmazottakSzama;
 
-    public IrodaSajat(int epuletMerete, string nev, int alkalmazottakSzama) : base(epuletMerete)
+    public IrodaSajat(int epuletMerete, int karbantartottsag, int rezsi, string nev, int maxAlkalmazottakSzama) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.nev = nev;
-        this.alkalmazottakSzama = alkalmazottakSzama;
+        this.maxAlkalmazottakSzama = maxAlkalmazottakSzama;
     }
 
     public string Nev
@@ -19,9 +19,9 @@ public class IrodaSajat : Epulet, IMunkahely
         set => nev = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public int AlkalmazottakSzama
+    public int MaxAlkalmazottakSzama
     {
-        get => alkalmazottakSzama;
-        set => alkalmazottakSzama = value;
+        get => maxAlkalmazottakSzama;
+        set => maxAlkalmazottakSzama = value;
     }
 }

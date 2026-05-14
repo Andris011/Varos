@@ -6,13 +6,13 @@ public class IrodaBerlemeny : Epulet, IAlberlet, IMunkahely
 {
     private string nev;
     private double berletiDij;
-    private int alkalmazottakSzama;
+    private int maxAlkalmazottakSzama;
 
-    public IrodaBerlemeny(int epuletMerete, string nev, double berletiDij, int alkalmazottakSzama) : base(epuletMerete)
+    public IrodaBerlemeny(int epuletMerete, int karbantartottsag, int rezsi, string nev, double berletiDij, int maxAlkalmazottakSzama) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.nev = nev;
         this.berletiDij = berletiDij;
-        this.alkalmazottakSzama = alkalmazottakSzama;
+        this.maxAlkalmazottakSzama = maxAlkalmazottakSzama;
     }
 
     public string Nev
@@ -27,10 +27,10 @@ public class IrodaBerlemeny : Epulet, IAlberlet, IMunkahely
         set => berletiDij = value;
     }
 
-    public int AlkalmazottakSzama
+    public int MaxAlkalmazottakSzama
     {
-        get => alkalmazottakSzama;
-        set => alkalmazottakSzama = value;
+        get => maxAlkalmazottakSzama;
+        set => maxAlkalmazottakSzama = value;
     }
 
     public void BerletiDijKifizetese()

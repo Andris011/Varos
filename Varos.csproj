@@ -7,4 +7,8 @@
         <Nullable>enable</Nullable>
         <StartupObject>Varos.Program</StartupObject>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Epulet\Iskola\" />
+    </ItemGroup>
 </Project>

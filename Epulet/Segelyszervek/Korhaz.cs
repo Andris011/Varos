@@ -15,9 +15,7 @@ namespace Varos.Epulet.Segelyszervek
         private int betegekSzama;
         private int felszereltseg; //1-10ig, a halalozasi rata ettol fugg
 
-
-
-        public Korhaz(int epuletMerete, string nev, int alkalmazottakSzama, int befogadoKepesseg, int betegekSzama, int felszereltseg) : base(epuletMerete)
+        public Korhaz(int epuletMerete, int karbantartottsag, int rezsi, string nev, int alkalmazottakSzama, int befogadoKepesseg, int betegekSzama, int felszereltseg) : base(epuletMerete, karbantartottsag, rezsi)
         {
             this.nev = nev;
             this.alkalmazottakSzama = alkalmazottakSzama;
@@ -32,7 +30,7 @@ namespace Varos.Epulet.Segelyszervek
             set => nev = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public int AlkalmazottakSzama
+        public int MaxAlkalmazottakSzama
         {
             get => alkalmazottakSzama;
             set => alkalmazottakSzama = value;

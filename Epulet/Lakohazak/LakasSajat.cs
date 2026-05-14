@@ -6,13 +6,11 @@ public class LakasSajat : Epulet, ILakohaz
 {
     private int maxLakokSzama;
     private int szobakSzama;
-    private double rezsi;
 
-    public LakasSajat(int epuletMerete, int maxLakokSzama, int szobakSzama, double rezsi) : base(epuletMerete)
+    public LakasSajat(int epuletMerete, int karbantartottsag, int rezsi, int maxLakokSzama, int szobakSzama) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.maxLakokSzama = maxLakokSzama;
         this.szobakSzama = szobakSzama;
-        this.rezsi = rezsi;
     }
 
     public int MaxLakokSzama
@@ -25,11 +23,5 @@ public class LakasSajat : Epulet, ILakohaz
     {
         get => szobakSzama;
         set => szobakSzama = value;
-    }
-
-    public double Rezsi
-    {
-        get => rezsi;
-        set => rezsi = value;
     }
 }

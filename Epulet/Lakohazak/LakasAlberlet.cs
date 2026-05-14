@@ -6,15 +6,13 @@ public class LakasAlberlet : Epulet, ILakohaz, IAlberlet
 {
     private int maxLakokSzama;
     private int szobakSzama;
-    private double rezsi;
     private double berletiDij;
     // private List<Ember> emberek;
 
-    public LakasAlberlet(int epuletMerete, int maxLakokSzama, int szobakSzama, double rezsi, double berletiDij) : base(epuletMerete)
+    public LakasAlberlet(int epuletMerete, int karbantartottsag, int rezsi, int maxLakokSzama, int szobakSzama, double berletiDij) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.maxLakokSzama = maxLakokSzama;
         this.szobakSzama = szobakSzama;
-        this.rezsi = rezsi;
         this.berletiDij = berletiDij;
     }
 
@@ -28,12 +26,6 @@ public class LakasAlberlet : Epulet, ILakohaz, IAlberlet
     {
         get => szobakSzama;
         set => szobakSzama = value;
-    }
-
-    public double Rezsi
-    {
-        get => rezsi;
-        set => rezsi = value;
     }
 
     public double BerletiDij
