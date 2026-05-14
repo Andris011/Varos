@@ -38,10 +38,34 @@ namespace Varos.esemenyek.foldrenges
             Console.WriteLine("---------------A földrengés elindult---------------");
             Console.WriteLine($"-----------------Erőssége: {Erosseg}--------------");
             Console.WriteLine($"-----------------Hatósugara: {Hatosugar}km--------");
-            
+            FoldrengesVege();
             Console.WriteLine($"-----------------Áldozatok száma: {Aldozatok}km--------");
             Console.WriteLine($"-----------------Kár: {Kar}ft--------");
-            
+            Console.WriteLine(VeszelySzint());
+        }
+        public void FoldrengesVege()
+        {
+            Aktiv = false;
+            Console.WriteLine("A földrengés véget ért");
+        }
+        public string VeszelySzint()
+        {
+            if (aldozatok <= 10)
+            {
+                return "Belépő szintű földrengés.";
+            }
+            else if (aldozatok <= 100)
+            {
+                return "Átlagos földrengés.";
+            }
+            else if (aldozatok <= 1000)
+            {
+                return "Erős földrengés.";
+            }
+            else
+            {
+                return "Természeti katasztrófa.";
+            }
         }
     }
 }
