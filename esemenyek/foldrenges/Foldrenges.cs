@@ -9,90 +9,62 @@ namespace Varos.esemenyek.foldrenges
 {
     internal class Foldrenges
     {
-        Random rnd = new Random();
-
         int erosseg;
         int hatosugar;
+        bool aktiv;
         int aldozatok;
         int kar;
-        int idotartam;
 
-        bool aktiv;
+        Random rnd = new Random();
 
         public Foldrenges()
         {
             Erosseg = rnd.Next(1, 11);
             Hatosugar = Erosseg * 5;
+            Aktiv = false;
             Aldozatok = Erosseg * rnd.Next(2, 40);
             Kar = Erosseg * rnd.Next(20000, 100000);
-            FoldrengesIdotartam();
-
-            Aktiv = false;
         }
 
         public int Erosseg { get => erosseg; set => erosseg = value; }
         public int Hatosugar { get => hatosugar; set => hatosugar = value; }
+        public bool Aktiv { get => aktiv; set => aktiv = value; }
         public int Aldozatok { get => aldozatok; set => aldozatok = value; }
         public int Kar { get => kar; set => kar = value; }
-        public int Idotartam { get => idotartam; set => idotartam = value; }
-        public bool Aktiv { get => aktiv; set => aktiv = value; }
 
         public void FoldrengesInditasa()
         {
             Aktiv = true;
-
             Console.WriteLine("---------------A földrengés elindult---------------");
-            Console.WriteLine($"--------------Erőssége: {Erosseg}--------------");
-            Console.WriteLine($"--------------Hatósugara: {Hatosugar}km--------");
-            Console.WriteLine($"--------------Időtartam: {Idotartam} másodperc--------");
-            Console.WriteLine($"--------------Áldozatok száma: {Aldozatok}--------");
-            Console.WriteLine($"--------------Kár: {Kar}ft--------");
-
-            VeszelySzint();
-
+            Console.WriteLine($"-----------------Erőssége: {Erosseg}--------------");
+            Console.WriteLine($"-----------------Hatósugara: {Hatosugar}km--------");
             FoldrengesVege();
+            Console.WriteLine($"-----------------Áldozatok száma: {Aldozatok}km--------");
+            Console.WriteLine($"-----------------Kár: {Kar}ft--------");
+            Console.WriteLine(VeszelySzint());
         }
         public void FoldrengesVege()
         {
-            Console.WriteLine("A földrengés véget ért");
             Aktiv = false;
+            Console.WriteLine("A földrengés véget ért");
         }
-        public void VeszelySzint()
+        public string VeszelySzint()
         {
             if (aldozatok <= 10)
             {
-                Console.WriteLine("Belépő szintű földrengés.");
+                return "Belépő szintű földrengés.";
             }
             else if (aldozatok <= 100)
             {
-                Console.WriteLine("Átlagos földrengés.");
+                return "Átlagos földrengés.";
             }
             else if (aldozatok <= 1000)
             {
-                Console.WriteLine("Erős földrengés.");
+                return "Erős földrengés.";
             }
             else
             {
-                Console.WriteLine("Természeti katasztrófa.");
-            }
-        }
-        public void FoldrengesIdotartam()
-        {
-            if (Erosseg <= 3)
-            {
-                Idotartam = rnd.Next(5, 15);
-            }
-            else if (Erosseg <= 6)
-            {
-                Idotartam = rnd.Next(15, 40);
-            }
-            else if (Erosseg <= 8)
-            {
-                Idotartam = rnd.Next(40, 80);
-            }
-            else
-            {
-                Idotartam = rnd.Next(80, 180);
+                return "Természeti katasztrófa.";
             }
         }
     }
