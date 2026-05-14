@@ -2,23 +2,15 @@
 
 namespace Varos.Epulet.GazdasagiEpuletek;
 
-public class IrodaSajat : IEpulet, IMunkahely
+public class IrodaSajat : Epulet, IMunkahely
 {
-    private int epuletMerete;
     private string nev;
     private int alkalmazottakSzama;
 
-    public IrodaSajat(int epuletMerete, string nev, int alkalmazottakSzama)
+    public IrodaSajat(int epuletMerete, string nev, int alkalmazottakSzama) : base(epuletMerete)
     {
-        this.epuletMerete = epuletMerete;
         this.nev = nev;
         this.alkalmazottakSzama = alkalmazottakSzama;
-    }
-
-    public int EpuletMerete
-    {
-        get => epuletMerete;
-        set => epuletMerete = value;
     }
 
     public string Nev

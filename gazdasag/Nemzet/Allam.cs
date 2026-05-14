@@ -12,14 +12,14 @@ namespace Varos.gazdasag.Nemzet
     internal class Allam
     {
         private List<Ceg> cegek;
-        private List<GazdasagAllampolgar> allampolgarok;
+        private List<IGazdasagAllampolgar> allampolgarok;
 
         private Bankszamla allamiBankszamla;
 
         public Allam()
         {
             cegek = new List<Ceg>();
-            allampolgarok = new List<GazdasagAllampolgar>();
+            allampolgarok = new List<IGazdasagAllampolgar>();
 
             allamiBankszamla = new AllamiBankszamla();
         }

@@ -7,10 +7,12 @@ using Varos.gazdasag.Bank;
 
 namespace Varos.gazdasag
 {
-    interface GazdasagAllampolgar
+    interface IGazdasagAllampolgar
     {
         int Eletkor { get; }
 
-        Bankszamla Szamla { get; }
+        Bankszamla Szamla { get; } // ha elmult 70 nem kotelezo (talan)
+        
+        // 
     }
 }

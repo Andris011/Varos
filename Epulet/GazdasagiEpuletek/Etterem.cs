@@ -2,33 +2,27 @@
 
 namespace Varos.Epulet.GazdasagiEpuletek;
 
-public class Etterem : IEpulet, IMunkahely
+public class Etterem : Epulet, IMunkahely
 {
     private string nev; 
-    private int epuletMerete;
     private string tipus; // gyorsetterem.. , kesobb orokolt osztaly ehelyett, ha szukseges
     private double ar; // mennyi egy fore egy etkezes, egyszeruseg kedveert ez legyen fix szerintem
     private int alkalmazottakSzama;
 
-    public Etterem(string nev, string tipus, double ar, int alkalmazottakSzama)
+    public Etterem(int epuletMerete, string nev, string tipus, double ar, int alkalmazottakSzama) : base(epuletMerete)
     {
         this.nev = nev;
         this.tipus = tipus;
         this.ar = ar;
         this.alkalmazottakSzama = alkalmazottakSzama;
     }
-
+    
     public string Nev
     {
         get => nev;
         set => nev = value ?? throw new ArgumentNullException(nameof(value));
     }
-
-    public int EpuletMerete
-    {
-        get => epuletMerete;
-        set => epuletMerete = value;
-    }
+    
 
     public string Tipus
     {

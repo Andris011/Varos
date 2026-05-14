@@ -8,7 +8,7 @@ namespace Varos.gazdasag.Nemzet.NAV
 {
     internal class NAV
     {
-        public static int FizetesAdoSzamolas(GazdasagAllampolgar ember, int brutto)
+        public static int FizetesAdoSzamolas(IGazdasagAllampolgar ember, int brutto)
         {
             double netto = brutto;
 

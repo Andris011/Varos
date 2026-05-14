@@ -2,18 +2,16 @@
 
 namespace Varos.Epulet.Lakohazak;
 
-public class LakasSajat : IEpulet, ILakohaz
+public class LakasSajat : Epulet, ILakohaz
 {
     private int maxLakokSzama;
     private int szobakSzama;
-    private int hazMerete;
     private double rezsi;
 
-    public LakasSajat(int maxLakokSzama, int szobakSzama, int hazMerete, double rezsi)
+    public LakasSajat(int epuletMerete, int maxLakokSzama, int szobakSzama, double rezsi) : base(epuletMerete)
     {
         this.maxLakokSzama = maxLakokSzama;
         this.szobakSzama = szobakSzama;
-        this.hazMerete = hazMerete;
         this.rezsi = rezsi;
     }
 
@@ -27,12 +25,6 @@ public class LakasSajat : IEpulet, ILakohaz
     {
         get => szobakSzama;
         set => szobakSzama = value;
-    }
-
-    public int EpuletMerete
-    {
-        get => hazMerete;
-        set => hazMerete = value;
     }
 
     public double Rezsi

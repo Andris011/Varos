@@ -1,18 +1,16 @@
 ﻿using Varos.Epulet.Interfaces;
 
-namespace Varos.Epulet.GazdasagiEpuletek;
+namespace Varos.Epulet.GazdasagiEpuletek.Gyarak;
 
-public class Gyar : IEpulet, IMunkahely
+public class Gyar : Epulet, IMunkahely
 {
     private string nev;
-    private int epuletMerete;
     private int alkalmazottakSzama;
     private string termek; //mit gyart  TODO: gazdasagban az adozast ez alapjan csinalni (?)
 
-    public Gyar(string nev, int epuletMerete, int alkalmazottakSzama, string termek)
+    public Gyar(int epuletMerete, string nev, int alkalmazottakSzama, string termek) : base(epuletMerete)
     {
         this.nev = nev;
-        this.epuletMerete = epuletMerete;
         this.alkalmazottakSzama = alkalmazottakSzama;
         this.termek = termek;
     }
@@ -23,11 +21,11 @@ public class Gyar : IEpulet, IMunkahely
         set => nev = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    public int EpuletMerete
-    {
-        get => epuletMerete;
-        set => epuletMerete = value;
-    }
+    // public int EpuletMerete
+    // {
+    //     get => epuletMerete;
+    //     set => epuletMerete = value;
+    // }
 
     public int AlkalmazottakSzama
     {

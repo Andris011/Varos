@@ -2,19 +2,18 @@
 
 namespace Varos.Epulet.Lakohazak;
 
-public class LakasAlberlet : IEpulet, ILakohaz, IAlberlet
+public class LakasAlberlet : Epulet, ILakohaz, IAlberlet
 {
     private int maxLakokSzama;
     private int szobakSzama;
-    private int hazMerete;
     private double rezsi;
     private double berletiDij;
+    // private List<Ember> emberek;
 
-    public LakasAlberlet(int maxLakokSzama, int szobakSzama, int hazMerete, double rezsi, double berletiDij)
+    public LakasAlberlet(int epuletMerete, int maxLakokSzama, int szobakSzama, double rezsi, double berletiDij) : base(epuletMerete)
     {
         this.maxLakokSzama = maxLakokSzama;
         this.szobakSzama = szobakSzama;
-        this.hazMerete = hazMerete;
         this.rezsi = rezsi;
         this.berletiDij = berletiDij;
     }
@@ -30,13 +29,6 @@ public class LakasAlberlet : IEpulet, ILakohaz, IAlberlet
         get => szobakSzama;
         set => szobakSzama = value;
     }
-
-    public int EpuletMerete
-    {
-        get => hazMerete;
-        set => hazMerete = value;
-    }
-    
 
     public double Rezsi
     {

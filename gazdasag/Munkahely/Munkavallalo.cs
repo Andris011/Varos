@@ -9,15 +9,15 @@ namespace Varos.gazdasag.Munkahely
     internal class Munkavallalo
     {
         private int fizetes;
-        private GazdasagAllampolgar szemelyiseg;
+        private IGazdasagAllampolgar szemelyiseg;
 
-        public Munkavallalo(int fizetes, GazdasagAllampolgar szemelyiseg)
+        public Munkavallalo(int fizetes, IGazdasagAllampolgar szemelyiseg)
         {
             this.fizetes = fizetes;
             this.szemelyiseg = szemelyiseg;
         }
 
         public int Fizetes { get => fizetes; set => fizetes = value; }
-        public GazdasagAllampolgar Szemelyiseg { get => szemelyiseg; }
+        public IGazdasagAllampolgar Szemelyiseg { get => szemelyiseg; }
     }
 }
