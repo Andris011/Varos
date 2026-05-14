@@ -33,6 +33,7 @@ Epulet:
 - meghal valaki, ures lesz a lakas :c
 - egeszsegugy (betellik a korhaz akkor tobben halnak stb)
 - temeto (halal utan ide rakni a halottakat, itt tarolni, esetleg elegetni)
+- krematórium
 
 
 Ember:
