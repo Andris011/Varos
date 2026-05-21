@@ -7,6 +7,7 @@ using Varos.gazdasag.Bank;
 using Varos.gazdasag.Bank.Impl;
 using Varos.gazdasag.Nemzet;
 using Varos.gazdasag.Nemzet.NAV;
+using Varos.Lakossag;
 
 namespace Varos.gazdasag.Munkahely
 {
@@ -17,7 +18,13 @@ namespace Varos.gazdasag.Munkahely
 
         public Ceg()
         {
+            munkavallalok = new List<Munkavallalo>();
             cegBankszamla = new MaganBankszamla();
+        }
+
+        public void Alkalmaz(Ember ember, int fizetes)
+        {
+            munkavallalok.Add(new Munkavallalo(fizetes, ember));
         }
 
         private int ProfitSzamolas()
@@ -45,7 +52,7 @@ namespace Varos.gazdasag.Munkahely
 
                 int allamnak = brutto - netto;
 
-                cegBankszamla.Utal(munkavallalo.Szemelyiseg.Szamla, netto);
+                cegBankszamla.Utal(munkavallalo.Szemelyiseg.Bankszamla, netto);
                 cegBankszamla.Utal(allam.AllamiBankszamla, allamnak);
             }
         }

@@ -22,7 +22,7 @@ namespace Varos.esemenyek.lotto
 
         public void SzelvenytVesz(Ember vasarlo, int darab)
         {
-            Console.Clear();
+            // Console.Clear();
             if (vasarlo.Bankszamla.Megfizetheto(1500))
             {
                 int egySzelvenyAra = 1500;
