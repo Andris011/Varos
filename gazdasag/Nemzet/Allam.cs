@@ -22,7 +22,10 @@ namespace Varos.gazdasag.Nemzet
             cegek = new List<Ceg>();
             allampolgarok = new List<Ember>();
 
-            allamiBankszamla = new AllamiBankszamla();
+            allamiBankszamla = new MaganBankszamla();
+
+            Tamogatas kezdoTamogatas = new Tamogatas("Európai Unió állam kezdőtámogatás", 167_000_000, "Csendes kis város");
+            kezdoTamogatas.Felvesz(allamiBankszamla);
         }
 
         public void AllampolgarFelvesz(Ember ember)
@@ -40,6 +43,17 @@ namespace Varos.gazdasag.Nemzet
             foreach (Ceg ceg in cegek)
             {
                 ceg.Havonta(this);
+            }
+
+            allamiBankszamla.Levonas(allampolgarok.Count*10000);
+
+            foreach (Ember ember in allampolgarok)
+            {
+                int nyugdij = 67000;
+                if (ember.EletKor >= 67)
+                {
+                    allamiBankszamla.Utal(ember.Bankszamla, nyugdij);
+                }
             }
         }
 

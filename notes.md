@@ -5,7 +5,8 @@
 - Gazdasag: Fata David
 - Esemeny: Gyarfas Balint || Heim Peter Mate
 
-Otletek
+
+--- Otletek ---
 
 Gazdasag:
 
@@ -13,11 +14,7 @@ Gazdasag:
 - villamos energia (kozmuvek) (epulet: mindenki x-et fogyaszt (rezsi novekszik))
 - arstopp (ukran haboru) ehhez ar index, termek osztaly
 - nyugdij (allam penzebol)
-- export/import
-- boldogsag elegedetseg
-- turizmus
-- nem korlatlan penz, hanem EU-s tamogatas 
-- korrupcio
+- nem korlatlan penz, hanem EU-s tamogatas
 
 
 Esemeny: 
@@ -27,6 +24,7 @@ Esemeny:
 - 911 (de balnaval)
 - gyerek szuletes
 
+
 Epulet:
 
 - allapot
@@ -34,11 +32,13 @@ Epulet:
 - egeszsegugy (betellik a korhaz akkor tobben halnak stb)
 - temeto (halal utan ide rakni a halottakat, itt tarolni, esetleg elegetni)
 - krematórium
+- turizmus (hotelek, latvanyossagok, vendeglatas)
 
 
-Ember:
+Lakossag:
 
 - boldogsag noveles (kaszino, drogok, kormanyvaltas, vandor cirkusz, szulinap, eskuvo,
   nagyobb pozitiv esemenyek, osszel szomorubbak)
 - nepesseg novekedes, csokkenes
 - varandosag
+- boldogsag elegedetseg
