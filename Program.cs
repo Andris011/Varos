@@ -23,10 +23,7 @@ class Program
 
         Console.ReadLine();
         Console.Clear();
-        Console.WriteLine("Igazán ki lehetett volna jelölni egy vezetőt a projektnek");
         Console.WriteLine("Enter hogy kilépj");
         Console.ReadLine();
-
-
     }
 }

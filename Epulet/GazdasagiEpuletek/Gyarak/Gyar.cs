@@ -5,13 +5,13 @@ namespace Varos.Epulet.GazdasagiEpuletek.Gyarak;
 public class Gyar : Epulet, IMunkahely
 {
     private string nev;
-    private int maxAlkalmazottakSzama;
+    private int alkalmazottakSzama;
     private string termek; //mit gyart  TODO: gazdasagban az adozast ez alapjan csinalni (?)
 
-    public Gyar(int epuletMerete, int karbantartottsag, int rezsi, string nev, int maxAlkalmazottakSzama, string termek) : base(epuletMerete, karbantartottsag, rezsi)
+    public Gyar(int epuletMerete, int karbantartottsag, int rezsi, string nev, int alkalmazottakSzama, string termek) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.nev = nev;
-        this.maxAlkalmazottakSzama = maxAlkalmazottakSzama;
+        this.alkalmazottakSzama = alkalmazottakSzama;
         this.termek = termek;
     }
 
@@ -27,9 +27,9 @@ public class Gyar : Epulet, IMunkahely
     //     set => epuletMerete = value;
     // }
 
-    public int MaxAlkalmazottakSzama
+    public int AlkalmazottakSzama
     {
-        get => maxAlkalmazottakSzama;
-        set => maxAlkalmazottakSzama = value;
+        get => alkalmazottakSzama;
+        set => alkalmazottakSzama = value;
     }
 }

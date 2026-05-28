@@ -5,6 +5,6 @@ namespace Varos.Epulet.Interfaces;
 public interface IMunkahely
 {
     string Nev { get; set; } 
-    int MaxAlkalmazottakSzama { get; set; }
+    int AlkalmazottakSzama { get; set; }
     
 }

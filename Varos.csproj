@@ -9,6 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Epulet\Iskola\" />
+      <Folder Include="Epulet\Boltok\" />
     </ItemGroup>
 </Project>

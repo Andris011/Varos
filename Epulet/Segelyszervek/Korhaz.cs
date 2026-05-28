@@ -30,7 +30,7 @@ namespace Varos.Epulet.Segelyszervek
             set => nev = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        public int MaxAlkalmazottakSzama
+        public int AlkalmazottakSzama
         {
             get => alkalmazottakSzama;
             set => alkalmazottakSzama = value;

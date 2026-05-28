@@ -42,7 +42,7 @@ namespace Varos.Lakossag
             this.Tulajdon = tulajdon;
             this.Penz = penz;
             this.Statusz = statusz;
-            this.BoldogsagSzint = boldogsagSzint;
+            this.BoldogsagSzint = boldogsagSzint; // pl ide alap ertek
             this.EhessegSzint = ehessegSzint;
             this.SzomjSzint = szomjSzint;
             this.Fizikum = fizikum;
@@ -72,4 +72,6 @@ namespace Varos.Lakossag
         public int VeralkoholSzint { get => veralkoholSzint; set => veralkoholSzint = value; }
         internal Bankszamla Bankszamla { get => bankszamla; set => bankszamla = value; }
     }
+    
+    // TODO boldogsag meg ilyenek bentrol valtoztatni (mint egy metodus)
 }

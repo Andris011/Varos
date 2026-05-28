@@ -7,14 +7,14 @@ public class Etterem : Epulet, IMunkahely
     private string nev; 
     private string tipus; // gyorsetterem.. , kesobb orokolt osztaly ehelyett, ha szukseges
     private double ar; // mennyi egy fore egy etkezes, egyszeruseg kedveert ez legyen fix szerintem
-    private int maxAlkalmazottakSzama;
+    private int alkalmazottakSzama;
 
-    public Etterem(int epuletMerete, int karbantartottsag, int rezsi, string nev, string tipus, double ar, int maxAlkalmazottakSzama) : base(epuletMerete, karbantartottsag, rezsi)
+    public Etterem(int epuletMerete, int karbantartottsag, int rezsi, string nev, string tipus, double ar, int alkalmazottakSzama) : base(epuletMerete, karbantartottsag, rezsi)
     {
         this.nev = nev;
         this.tipus = tipus;
         this.ar = ar;
-        this.maxAlkalmazottakSzama = maxAlkalmazottakSzama;
+        this.alkalmazottakSzama = alkalmazottakSzama;
     }
 
     public string Nev
@@ -36,10 +36,10 @@ public class Etterem : Epulet, IMunkahely
         set => ar = value;
     }
 
-    public int MaxAlkalmazottakSzama
+    public int AlkalmazottakSzama
     {
-        get => maxAlkalmazottakSzama;
-        set => maxAlkalmazottakSzama = value;
+        get => alkalmazottakSzama;
+        set => alkalmazottakSzama = value;
     }
 
     // TODO: fuggveny arra, hogy ha eszik itt az ember akkor a penzebol levonja az arat
