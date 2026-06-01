@@ -1,6 +1,9 @@
-﻿namespace Varos.Epulet;
+﻿using Varos.gazdasag.Nemzet;
 
-public abstract class Epulet
+namespace Varos.Epulet;
+
+
+internal abstract class Epulet
 {
     private int epuletMerete; // m2
     private int karbantartottsag; // 0-10, 0 = lerombolodott
@@ -40,4 +43,6 @@ public abstract class Epulet
         
         if (this.karbantartottsag < 0) karbantartottsag = 0; 
     }
+
+    public virtual void Hetente(Allam allam) { }
 }

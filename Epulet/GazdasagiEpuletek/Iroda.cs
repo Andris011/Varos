@@ -2,7 +2,7 @@
 
 namespace Varos.Epulet.GazdasagiEpuletek;
 
-public class Iroda : Epulet, IMunkahely
+internal class Iroda : Epulet, IMunkahely
 {
     private string nev;
     private int alkalmazottakSzama;

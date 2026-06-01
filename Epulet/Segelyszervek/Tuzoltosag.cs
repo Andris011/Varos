@@ -1,8 +1,9 @@
 ﻿using Varos.Epulet.Interfaces;
+using Varos.gazdasag.Nemzet;
 
 namespace Varos.Epulet.Segelyszervek;
 
-public class Tuzoltosag : Epulet, IMunkahely
+internal class Tuzoltosag : Epulet, IMunkahely
 {
     private string nev;
     private int alkalmazottakSzama;
@@ -23,5 +24,10 @@ public class Tuzoltosag : Epulet, IMunkahely
     {
         get => alkalmazottakSzama;
         set => alkalmazottakSzama = value;
+    }
+
+    public override void Hetente(Allam allam)
+    {
+        allam.AllamiBankszamla.Levonas(900_000);
     }
 }

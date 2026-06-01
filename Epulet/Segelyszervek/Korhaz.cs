@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Varos.Epulet.Interfaces;
+using Varos.gazdasag.Nemzet;
 
 namespace Varos.Epulet.Segelyszervek
 {
@@ -34,6 +35,11 @@ namespace Varos.Epulet.Segelyszervek
         {
             get => alkalmazottakSzama;
             set => alkalmazottakSzama = value;
+        }
+
+        public override void Hetente(Allam allam)
+        {
+            allam.AllamiBankszamla.Levonas(1_000_000);
         }
     }
 }

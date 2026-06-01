@@ -2,7 +2,7 @@
 
 namespace Varos.Epulet.GazdasagiEpuletek;
 
-public class Etterem : Epulet, IMunkahely
+internal class Etterem : Epulet, IMunkahely
 {
     private string nev; 
     private string tipus; // gyorsetterem.. , kesobb orokolt osztaly ehelyett, ha szukseges

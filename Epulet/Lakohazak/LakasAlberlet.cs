@@ -2,7 +2,7 @@
 
 namespace Varos.Epulet.Lakohazak;
 
-public class LakasAlberlet : Epulet, ILakohaz, IAlberlet
+internal class LakasAlberlet : Epulet, ILakohaz, IAlberlet
 {
     private int maxLakokSzama;
     private int szobakSzama;
