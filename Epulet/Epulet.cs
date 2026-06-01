@@ -23,12 +23,21 @@ public abstract class Epulet
     public int Karbantartottsag
     {
         get => karbantartottsag;
-        set => karbantartottsag += value;
+        set => karbantartottsag = value;
     }
     
     public int Rezsi
     {
         get => rezsi;
         set => rezsi = value;
+    }
+
+    public void Foldrenges()
+    {
+        int sebzes = new Random().Next(1, 11);
+        
+        this.karbantartottsag -= sebzes;
+        
+        if (this.karbantartottsag < 0) karbantartottsag = 0; 
     }
 }
