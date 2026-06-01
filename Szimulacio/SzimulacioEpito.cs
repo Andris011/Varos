@@ -156,8 +156,6 @@ namespace Varos.Szimulacio
                         cegek.Add(ceg);
                     }
 
-                    Console.WriteLine($"ceg: {ceg}");
-
                     ceg.Alkalmaz(ember, 200_000 + rng.Next(0, 50_000));
                 }
             }
