@@ -11,10 +11,13 @@ namespace Varos.esemenyek.karacsony
     {
         public void KaracsonyInditasa(List<Ember> lakossag)
         {
-            Console.WriteLine("---------------Karácsony elkezdődött---------------");
-            Console.WriteLine("--------------Ho-ho-ho! Boldog Karácsonyt!--------------"); // Kringelin nem jár mellé
-            Console.WriteLine("--------------Mindenki boldogsága nőtt 2-vel--------");
-            Console.WriteLine("--------------Az ünnepi vacsora csökkentette az éhséget és szomjúságot 3-mal--------");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nKarácsony elkezdődött");
+
+            Console.ResetColor();
+            Console.WriteLine("\tHo-ho-ho! Boldog Karácsonyt!"); // Kringelin nem jár mellé
+            Console.WriteLine("\tMindenki boldogsága nőtt 2-vel");
+            Console.WriteLine("\tAz ünnepi vacsora csökkentette az éhséget és szomjúságot 3-mal");
 
             foreach (Ember ember in lakossag)
             {
@@ -23,7 +26,7 @@ namespace Varos.esemenyek.karacsony
                 ember.SzomjSzint = Math.Max(1, ember.SzomjSzint - 3);
             }
 
-            KaracsonyVege();
+            //KaracsonyVege();
         }
 
         public void KaracsonyVege()

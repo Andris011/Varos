@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Varos.Lakossag;
 
+
+
 namespace Varos.esemenyek.lotto
 {
     internal class Lotto
@@ -71,12 +73,13 @@ namespace Varos.esemenyek.lotto
         }
 
         private Random rnd = new Random();
-        public void Roll()
-        //nyeremeny(osszpenz %-a)- esély |100%- 1/10000 | 10% - 1/1000 | 1% - 1/100 | 0.1% - 1/10
-        {
 
-            Console.Clear();
-             
+        
+        public LottoEredmeny Roll()
+        {
+            //Console.Clear();
+            LottoEredmeny eredmeny = new LottoEredmeny();
+
             foreach (var item in tar)
             {
                 Ember vasarlo = item.Key;
@@ -87,12 +90,15 @@ namespace Varos.esemenyek.lotto
                         //Console.WriteLine("roll");
                         if (osszpenz <= 0) break;
 
-                        int roll = rnd.Next(10000);
+                        int roll = rnd.Next(2000);
+                        //roll = 0;
                         int nyeremeny = 0;
 
                         if (roll == 0)
                         {
                             nyeremeny = osszpenz;
+                            eredmeny.JackpotNyertes=vasarlo;
+                            eredmeny.JackpotOsszeg=nyeremeny;
                             osszpenz = 0;
                         }
                         else if (roll < 10)
@@ -105,16 +111,17 @@ namespace Varos.esemenyek.lotto
                             nyeremeny = (int)(osszpenz * 0.01);
                             osszpenz -= nyeremeny;
                         }
-                        else if (roll < 1000)
-                        {
-                            nyeremeny = (int)(osszpenz * 0.001);
-                            osszpenz -= nyeremeny;
-                        }
+
 
                         if (nyeremeny > 0)
                         {
                             vasarlo.Bankszamla.Feltoltes(nyeremeny);
                             vasarlo.BoldogsagSzint = 10;
+
+                            if (vasarlo != eredmeny.JackpotNyertes)
+                            {
+                               eredmeny.Nyertesek.Add(vasarlo);
+                            }
                             //Console.WriteLine($"{ember.Nev} nyert {nyeremeny} pénzt!");
                         }
                         else
@@ -124,7 +131,9 @@ namespace Varos.esemenyek.lotto
                     }
 
             }
+            
             tar.Clear();
+            return eredmeny;
 
         }
     }

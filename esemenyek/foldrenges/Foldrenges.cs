@@ -40,13 +40,15 @@ namespace Varos.esemenyek.foldrenges
         public void FoldrengesInditasa()
         {
             Aktiv = true;
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\nKitört egy földrengés!");
 
-            Console.WriteLine("---------------A földrengés elindult---------------");
-            Console.WriteLine($"--------------Erőssége: {Erosseg}--------------");
-            Console.WriteLine($"--------------Hatósugara: {Hatosugar}km--------");
-            Console.WriteLine($"--------------Időtartam: {Idotartam} másodperc--------");
-            Console.WriteLine($"--------------Áldozatok száma: {Aldozatok}--------");
-            Console.WriteLine($"--------------Kár: {Kar}ft--------");
+            Console.ResetColor();
+            Console.WriteLine($"\tErőssége: {Erosseg}");
+            Console.WriteLine($"\tHatósugara: {Hatosugar} km");
+            Console.WriteLine($"\tIdőtartam: {Idotartam} másodperc");
+            Console.WriteLine($"\tÁldozatok száma: {Aldozatok}");
+            Console.WriteLine($"\tKár: {Kar} Ft");
 
             VeszelySzint();
 
@@ -54,26 +56,26 @@ namespace Varos.esemenyek.foldrenges
         }
         public void FoldrengesVege()
         {
-            Console.WriteLine("A földrengés véget ért");
+            //Console.WriteLine("A földrengés véget ért");
             Aktiv = false;
         }
         public void VeszelySzint()
         {
             if (aldozatok <= 10)
             {
-                Console.WriteLine("Belépő szintű földrengés.");
+                Console.WriteLine("\tBelépő szintű földrengés.");
             }
             else if (aldozatok <= 100)
             {
-                Console.WriteLine("Átlagos földrengés.");
+                Console.WriteLine("\tÁtlagos földrengés.");
             }
             else if (aldozatok <= 1000)
             {
-                Console.WriteLine("Erős földrengés.");
+                Console.WriteLine("\tErős földrengés.");
             }
             else
             {
-                Console.WriteLine("Természeti katasztrófa.");
+                Console.WriteLine("\tTermészeti katasztrófa.");
             }
         }
         public void FoldrengesIdotartam()

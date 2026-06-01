@@ -28,10 +28,10 @@ namespace Varos.Szimulacio
             rng = new Random();
         }
 
-        public (Epulet.Epulet?[,], List<Epulet.Epulet>) MapGeneralas(int szelesseg, int magassag)
+        public (Epulet.Epulet?[,], List<(Epulet.Epulet, (int, int))>) MapGeneralas(int szelesseg, int magassag)
         {
             Epulet.Epulet?[,] map = new Epulet.Epulet[magassag, szelesseg];
-            List<Epulet.Epulet> epuletek = new List<Epulet.Epulet>();
+            List<(Epulet.Epulet, (int, int))> epuletek = new List<(Epulet.Epulet, (int, int))>();
 
             for (int y = 0; y < magassag; y++)
             {
@@ -61,9 +61,67 @@ namespace Varos.Szimulacio
 
                     if (!(epulet is null))
                     {
-                        epuletek.Add(epulet);
+                        epuletek.Add((epulet, (x, y)));
                     }
                 }
+            }
+
+            List<(int, int)> ureshelyek = new List<(int, int)>();
+
+            int korhazak = 2;
+            int rendorsegek = 1;
+            int tuzoltosagok = 1;
+            int iskolak = 3;
+
+            for (int y = 0; y < magassag; y++)
+            {
+                for (int x = 0; x < szelesseg; x++)
+                {
+                    if (map[y, x] is null)
+                    {
+                        ureshelyek.Add((x, y));
+                    }
+                }
+            }
+
+            for (int i = ureshelyek.Count - 1; i > 0; i--)
+            {
+                int j = rng.Next(i + 1);
+                (ureshelyek[i], ureshelyek[j]) = (ureshelyek[j], ureshelyek[i]);
+            }
+
+            foreach ((int x, int y) in ureshelyek)
+            {
+                Epulet.Epulet? epulet = null;
+                int rezsi = rng.Next(6, 7) * 6767;
+
+                if (epulet is null && korhazak-- > 0)
+                {
+                    epulet = new Epulet.Segelyszervek.Korhaz(40, 10 - rng.Next(1, 3), rezsi, "Városi Korház", 6, 7, 6, 7);
+                }
+
+                if (epulet is null && rendorsegek-- > 0)
+                {
+                    epulet = new Epulet.Segelyszervek.Rendorseg(40, 10 - rng.Next(1, 3), rezsi, "Rendőrfőkapitányság", 6);
+                }
+
+                if (epulet is null && tuzoltosagok-- > 0)
+                {
+                    epulet = new Epulet.Segelyszervek.Tuzoltosag(40, 10 - rng.Next(1, 3), rezsi, "Tűzoltóság", 7);
+                }
+
+                if (epulet is null && iskolak-- > 0)
+                {
+                    epulet = new Epulet.Iskola.Iskola(40, 10 - rng.Next(1, 3), rezsi, "Iskola", 6, 7);
+                }
+
+                if (epulet is null)
+                {
+                    break;
+                }
+
+                map[y, x] = epulet;
+                epuletek.Add((epulet, (x, y)));
             }
 
             return (map, epuletek);
@@ -99,7 +157,7 @@ namespace Varos.Szimulacio
             while (koltoztetendo.Count > 0)
             {
                 Ember ember = koltoztetendo[0];
-                
+
                 bool kovetkezoHaz = false;
 
                 if (map[y, x] is Epulet.Lakohazak.LakasSajat sajat && feltoltott < sajat.MaxLakokSzama)
@@ -109,7 +167,7 @@ namespace Varos.Szimulacio
                     feltoltott++;
                     kovetkezoHaz = true;
                 }
-                    
+
                 if (map[y, x] is Epulet.Lakohazak.LakasAlberlet alberlet && feltoltott < alberlet.MaxLakokSzama)
                 {
                     ember.LakohazID = alberlet;
@@ -123,7 +181,8 @@ namespace Varos.Szimulacio
                     kovetkezoHaz = true;
                 }
 
-                if (kovetkezoHaz) {
+                if (kovetkezoHaz)
+                {
                     feltoltott = 0;
                     x++;
 

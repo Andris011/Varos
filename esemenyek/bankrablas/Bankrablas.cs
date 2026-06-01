@@ -32,10 +32,11 @@ namespace Varos.esemenyek.bankrablas
                 Console.WriteLine("Nincs elég ember a városban a bankrabláshoz.");
                 return;
             }
-
-            Console.WriteLine("---------------Bankrablás történt!---------------");
-            Console.WriteLine($"--------------Tettesek száma: {TettesekSzama}--------------");
-            Console.WriteLine($"--------------Zsákmány: {OsszZsakmany}ft--------");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("\nA bankot kirabolták!");
+            Console.ResetColor();
+            Console.WriteLine($"\tTettesek száma: {TettesekSzama}");
+            Console.WriteLine($"\tZsákmány: {OsszZsakmany}ft");
 
             // Tettesek kiválasztása
             List<Ember> masolat = new List<Ember>(lakossag);
@@ -53,7 +54,7 @@ namespace Varos.esemenyek.bankrablas
             int egyennekJuto = OsszZsakmany / Tettesek.Count;
             int maradek = OsszZsakmany % Tettesek.Count;
 
-            Console.WriteLine("--------------A tettesek és zsákmányuk:--------");
+            Console.WriteLine("\tA tettesek és zsákmányuk:");
             for (int i = 0; i < Tettesek.Count; i++)
             {
                 Ember tettes = Tettesek[i];
@@ -61,10 +62,10 @@ namespace Varos.esemenyek.bankrablas
                 if (i == 0) zsakmany += maradek; // Maradékot az első kapja
                 
                 tettes.Bankszamla.Feltoltes(zsakmany);
-                Console.WriteLine($"--------------{tettes.Nev}: +{zsakmany}ft--------");
+                Console.WriteLine($"\t\t{tettes.Nev}: +{zsakmany}ft");
             }
 
-            Console.WriteLine("--------------A bankrablás sikeres volt!--------");
+            Console.WriteLine("\tA bankrablás sikeres volt!");
         }
     }
 }

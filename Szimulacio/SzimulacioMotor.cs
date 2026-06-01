@@ -15,19 +15,23 @@ namespace Varos.Szimulacio
 {
     internal class SzimulacioMotor
     {
+        private static string kiemeltSzoveg = "";
+
+        public static string KiemeltSzoveg { get => kiemeltSzoveg; set => kiemeltSzoveg = value; }
+
         public static void Futtatas()
         {
-            int menuSzelesseg = 15;
+            int menuSzelesseg = 36;
             int mapSzelesseg = 10;
             int mapMagassag = 10;
-            int emberSzam = 100;
+            int emberSzam = 250;
 
             int hetekSzama = 0;
 
             SzimulacioEpito epito = new SzimulacioEpito();
             EsemenyMotor esemenyek = new EsemenyMotor();
 
-            (Epulet.Epulet?[,] map, List<Epulet.Epulet> epuletek) = epito.MapGeneralas(mapSzelesseg, mapMagassag);
+            (Epulet.Epulet?[,] map, List<(Epulet.Epulet, (int, int))> epuletek) = epito.MapGeneralas(mapSzelesseg, mapMagassag);
             List<Ember> emberek = epito.EmberGeneralas(map, emberSzam);
             List<Ceg> cegek = epito.MunkaGeneralas(emberek);
 
@@ -38,35 +42,99 @@ namespace Varos.Szimulacio
             foreach (Ember ember in emberek) allam.AllampolgarFelvesz(ember);
             foreach (Ceg ceg in cegek) allam.CegFelvesz(ceg);
 
+            string leallasUzenet = "";
+            bool mindenkeppLeall = false;
             bool futAJatek = true;
+            bool lepes = false;
+
+            Console.CursorVisible = false;
 
             while (futAJatek)
             {
-                esemenyek.Hetente(allam, epuletek);
+                StringBuilder iro = new StringBuilder();
 
-                if (hetekSzama % 4 == 0)
+                iro.Append(new string('\n', 1000));
+                iro.AppendLine(MenuOsszerak(menuSzelesseg, hetekSzama));
+
+                MapNyomtat(iro, map);
+                StatNyomtat(iro, allam, cegek.Count, epuletek.Count);
+
+                iro.Append("\n");
+                iro.Append("\x1B[0;32m");
+                MenuKiir(iro, menuSzelesseg, kiemeltSzoveg);
+                iro.Append("\x1B[0m");
+
+                Console.Write(iro.ToString());
+
+                if (mindenkeppLeall)
                 {
-                    allam.Havonta();
+                    futAJatek = false;
                 }
 
-                StringBuilder menuIro = new StringBuilder();
-                menuIro.AppendLine(MenuOsszerak(menuSzelesseg, hetekSzama));
-                MapNyomtat(menuIro, map);
-
-                Console.Clear();
-                Console.WriteLine(menuIro.ToString());
-
-                while (!Console.KeyAvailable) { }
-
-                ConsoleKeyInfo key = Console.ReadKey(true);
-
-                switch (key.Key)
+                if (!mindenkeppLeall)
                 {
-                    case ConsoleKey.Spacebar:
-                    case ConsoleKey.Enter:
-                        hetekSzama++;
-                        break;
+                    if (lepes)
+                    {
+                        lepes = false;
+                        esemenyek.Hetente(allam, epuletek, map);
+
+                        foreach ((Epulet.Epulet epulet, _) in epuletek)
+                        {
+                            epulet.Hetente(allam);
+                        }
+
+                        if (hetekSzama % 4 == 0)
+                        {
+                            allam.Havonta();
+                        }
+                    }
+
+                    if (allam.Allampolgarok.Count == 0)
+                    {
+                        mindenkeppLeall = true;
+                        leallasUzenet = "Mindenki meghalt!";
+                    }
+
+                    if (epuletek.Count == 0)
+                    {
+                        mindenkeppLeall = true;
+                        leallasUzenet = "Minden epület ledőlt!";
+                    }
+
+                    if (!allam.AllamiBankszamla.Megfizetheto(1))
+                    {
+                        mindenkeppLeall = true;
+                        leallasUzenet = "Az állam csődbe ment!";
+                    }
                 }
+
+                if (mindenkeppLeall)
+                {
+                    string sor = new string('─', leallasUzenet.Length + 2);
+                    Console.WriteLine($"\n{sor}\n {leallasUzenet} \n{sor}");
+                }
+
+                ConsoleKey betu = Console.ReadKey(true).Key;
+
+                if (betu == ConsoleKey.Escape)
+                {
+                    futAJatek = false;
+                }
+
+                hetekSzama++;
+                lepes = true;
+            }
+
+            Console.WriteLine("\nKilépés a szimulációból...");
+        }
+
+        private static void MenuKiir(StringBuilder iro, int menuSzelesseg, string line)
+        {
+            menuSzelesseg += 14;
+
+            for (int i = 0; i < line.Length; i += menuSzelesseg)
+            {
+                iro.AppendLine(line.Substring(i, Math.Min(menuSzelesseg, line.Length - i)));
             }
         }
 
@@ -79,29 +147,96 @@ namespace Varos.Szimulacio
             return $"====== {elotte}{menuSzalag}{utana} ======";
         }
 
-        public static void MapNyomtat(StringBuilder menuIro, Epulet.Epulet?[,] map)
+        public static void StatNyomtat(StringBuilder iro, Allam allam, int cegSzam, int epuletSzam)
         {
+            iro.Append("\n");
+
+            iro.AppendLine("Állam adatai:");
+            iro.AppendLine($"- államkincstár nagysága: {allam.AllamiBankszamla.Egyenleg}");
+            iro.Append("\n");
+
+            iro.AppendLine("Város adatai:");
+            iro.AppendLine($"- épületek: {epuletSzam}");
+            iro.Append("\n");
+
+            int nyugdijasok = 0;
+            foreach (Ember ember in allam.Allampolgarok)
+            {
+                nyugdijasok += (ember.EletKor > 67 ? 1 : 0);
+            }
+
+            iro.AppendLine("Demográfiai adatok:");
+            iro.AppendLine($"- lakosok: {allam.Allampolgarok.Count}");
+            iro.AppendLine($"- nyugdíjasok: {nyugdijasok} ({Math.Round(((double)nyugdijasok / allam.Allampolgarok.Count) * 100)}%)");
+        }
+
+        public static void MapNyomtat(StringBuilder iro, Epulet.Epulet?[,] map)
+        {
+
+            string[,] kepernyoMatrix = new string[map.GetLength(0) * 3, map.GetLength(1) * 6];
+
             for (int y = 0; y < map.GetLength(0); y++)
             {
                 for (int x = 0; x < map.GetLength(1); x++)
                 {
+                    string kiirt = "";
+
                     if (map[y, x] is Epulet.Lakohazak.LakasSajat)
                     {
-                        menuIro.Append("\x1B[0;34m");
-                        menuIro.Append('▣');
+                        kiirt = "\x1B[0;32mL\x1b[0m";
                     }
                     else if (map[y, x] is Epulet.Lakohazak.LakasAlberlet)
                     {
-                        menuIro.Append("\x1B[0;36m");
-                        menuIro.Append('◩');
+                        kiirt = "\x1B[0;92mA\x1b[0m";
                     }
-                    else
+                    else if (map[y, x] is Epulet.Segelyszervek.Korhaz)
                     {
-                        menuIro.Append(' ');
+                        kiirt = "\x1B[0;31mK\x1b[0m";
+                    }
+                    else if (map[y, x] is Epulet.Segelyszervek.Rendorseg)
+                    {
+                        kiirt = "\x1B[0;34mR\x1b[0m";
+                    }
+                    else if (map[y, x] is Epulet.Segelyszervek.Tuzoltosag)
+                    {
+                        kiirt = "\x1B[0;33mT\x1b[0m";
+                    }
+                    else if (map[y, x] is Epulet.Iskola.Iskola)
+                    {
+                        kiirt = "\x1B[0;35mI\x1b[0m";
+                    }
+
+                    if (kiirt.Length > 0)
+                    {
+                        kepernyoMatrix[y * 3, x * 5] = "┌";
+                        kepernyoMatrix[y * 3, x * 5 + 4] = "┐";
+
+                        kepernyoMatrix[y * 3 + 1, x * 5] = "│";
+                        kepernyoMatrix[y * 3 + 1, x * 5 + 4] = "│";
+
+                        kepernyoMatrix[y * 3 + 2, x * 5] = "└";
+                        kepernyoMatrix[y * 3 + 2, x * 5 + 4] = "┘";
+
+                        kepernyoMatrix[y * 3 + 1, x * 5 + 2] = kiirt;
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            kepernyoMatrix[y * 3, x * 5 + 1 + i] = "─";
+                            kepernyoMatrix[y * 3 + 2, x * 5 + 1 + i] = "─";
+                        }
                     }
                 }
+            }
 
-                menuIro.AppendLine("\x1B[0m");
+            for (int y = 0; y < kepernyoMatrix.GetLength(0); y++)
+            {
+                for (int x = 0; x < kepernyoMatrix.GetLength(1); x++)
+                {
+                    string szoveg = kepernyoMatrix[y, x];
+                    if (szoveg is null) szoveg = " ";
+                    iro.Append(szoveg);
+                }
+                iro.Append("\n");
             }
         }
     }
