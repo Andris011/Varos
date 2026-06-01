@@ -57,6 +57,7 @@ namespace Varos.gazdasag.Nemzet
             }
         }
 
+        public List<Ember> Allampolgarok { get => allampolgarok; }
         public Bankszamla AllamiBankszamla { get => allamiBankszamla; }
     }
 }

@@ -25,8 +25,9 @@ namespace Varos.Szimulacio
             int hetekSzama = 0;
 
             SzimulacioEpito epito = new SzimulacioEpito();
+            EsemenyMotor esemenyek = new EsemenyMotor();
 
-            Epulet.Epulet?[,] map = epito.MapGeneralas(mapSzelesseg, mapMagassag);
+            (Epulet.Epulet?[,] map, List<Epulet.Epulet> epuletek) = epito.MapGeneralas(mapSzelesseg, mapMagassag);
             List<Ember> emberek = epito.EmberGeneralas(map, emberSzam);
             List<Ceg> cegek = epito.MunkaGeneralas(emberek);
 
@@ -41,6 +42,8 @@ namespace Varos.Szimulacio
 
             while (futAJatek)
             {
+                esemenyek.Hetente(allam, epuletek);
+
                 if (hetekSzama % 4 == 0)
                 {
                     allam.Havonta();

@@ -28,9 +28,10 @@ namespace Varos.Szimulacio
             rng = new Random();
         }
 
-        public Epulet.Epulet?[,] MapGeneralas(int szelesseg, int magassag)
+        public (Epulet.Epulet?[,], List<Epulet.Epulet>) MapGeneralas(int szelesseg, int magassag)
         {
             Epulet.Epulet?[,] map = new Epulet.Epulet[magassag, szelesseg];
+            List<Epulet.Epulet> epuletek = new List<Epulet.Epulet>();
 
             for (int y = 0; y < magassag; y++)
             {
@@ -57,10 +58,15 @@ namespace Varos.Szimulacio
                     }
 
                     map[y, x] = epulet;
+
+                    if (!(epulet is null))
+                    {
+                        epuletek.Add(epulet);
+                    }
                 }
             }
 
-            return map;
+            return (map, epuletek);
         }
 
         public List<Ember> EmberGeneralas(Epulet.Epulet?[,] map, int emberSzam)
@@ -73,6 +79,7 @@ namespace Varos.Szimulacio
                 bool hazassag = rng.Next(0, 10) == 0;
 
                 Bankszamla szamla = new MaganBankszamla();
+                szamla.Feltoltes(rng.Next(100_000, 400_000));
 
                 emberek.Add(new Ember(i, TeljesNev(), rng.Next(5, 80), nem, null, null, new List<string>(), -1, "életben van", 5, 5, 5, 5, hazassag, false, 75, 0, szamla));
             }
@@ -141,17 +148,18 @@ namespace Varos.Szimulacio
 
             foreach (Ember ember in emberek)
             {
-                if (rng.Next(1, 20) == 1) continue;
-
-                if (ceg is null || rng.Next(1, 5) == 1)
+                if (rng.Next(1, 20) > 1)
                 {
-                    ceg = new Ceg();
-                    cegek.Add(ceg);
+                    if (ceg is null || rng.Next(1, 5) == 1)
+                    {
+                        ceg = new Ceg();
+                        cegek.Add(ceg);
+                    }
+
+                    Console.WriteLine($"ceg: {ceg}");
+
+                    ceg.Alkalmaz(ember, 200_000 + rng.Next(0, 50_000));
                 }
-
-                Console.WriteLine($"ceg: {ceg}");
-
-                ceg.Alkalmaz(ember, 200_000 + rng.Next(0, 50_000));
             }
 
             return cegek;
