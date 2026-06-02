@@ -91,7 +91,7 @@ namespace Varos.Lakossag
             {
                 this.varandossagSzamlalo += 1;
             }
-            if (varandossagSzamlalo >= 39)
+            if (this.varandossagSzamlalo >= 39)
             {
                 VarandossagKapcsolo();
                 this.varandossagSzamlalo = 0;
