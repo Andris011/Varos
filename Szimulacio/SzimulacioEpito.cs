@@ -127,19 +127,19 @@ namespace Varos.Szimulacio
             return (map, epuletek);
         }
 
-        public List<Ember> EmberGeneralas(Epulet.Epulet?[,] map, int emberSzam)
+        public List<Ember> EmberGeneralas(int emberSzam)
         {
             List<Ember> emberek = new List<Ember>();
 
             for (int i = 0; i < emberSzam; i++)
             {
-                string nem = rng.Next(0, 2) == 0 ? "férfi" : "nő";
+                string nem = rng.Next(0, 2) == 0 ? "F" : "M";
                 bool hazassag = rng.Next(0, 10) == 0;
 
                 Bankszamla szamla = new MaganBankszamla();
                 szamla.Feltoltes(rng.Next(100_000, 400_000));
 
-                emberek.Add(new Ember(i, TeljesNev(), rng.Next(5, 80), nem, null, null, new List<string>(), -1, "életben van", 5, 5, 5, 5, hazassag, false, 75, 0, szamla));
+                emberek.Add(new Ember(TeljesNev(), rng.Next(5, 70), nem, null, szamla));
             }
 
             return emberek;

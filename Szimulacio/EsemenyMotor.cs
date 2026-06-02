@@ -66,7 +66,7 @@ namespace Varos.Szimulacio
             hetekSzama++;
             LottoFuttatas(allam);
 
-            int val = rng.Next(1, 10);
+            int val = rng.Next(1, 50);
 
             if (val == 1)
             {

@@ -28,6 +28,36 @@ namespace Varos.gazdasag.Nemzet
             kezdoTamogatas.Felvesz(allamiBankszamla);
         }
 
+        public void AllampolgarElhunyt(Ember ember)
+        {
+            allampolgarok.Remove(ember);
+
+            foreach (Ceg ceg in cegek)
+            {
+                Munkavallalo? munkavallalo = ceg.Munkavallalok.Find(munkavallalo => munkavallalo.Szemelyiseg == ember);
+
+                if (!(munkavallalo is null))
+                {
+                    ceg.Munkavallalok.Remove(munkavallalo);
+                }
+            }
+        }
+
+        public bool VanMunkaja(Ember ember)
+        {
+            foreach (Ceg ceg in cegek)
+            {
+                Munkavallalo? munkavallalo = ceg.Munkavallalok.Find(munkavallalo => munkavallalo.Szemelyiseg == ember);
+
+                if (!(munkavallalo is null))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void AllampolgarFelvesz(Ember ember)
         {
             allampolgarok.Add(ember);

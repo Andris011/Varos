@@ -22,6 +22,8 @@ namespace Varos.gazdasag.Munkahely
             cegBankszamla = new MaganBankszamla();
         }
 
+        public List<Munkavallalo> Munkavallalok { get => munkavallalok; }
+
         public void Alkalmaz(Ember ember, int fizetes)
         {
             munkavallalok.Add(new Munkavallalo(fizetes, ember));

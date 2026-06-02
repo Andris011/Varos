@@ -116,7 +116,7 @@ namespace Varos.esemenyek.lotto
                         if (nyeremeny > 0)
                         {
                             vasarlo.Bankszamla.Feltoltes(nyeremeny);
-                            vasarlo.BoldogsagSzint = 10;
+                            //vasarlo.BoldogsagSzint = 10;
 
                             if (vasarlo != eredmeny.JackpotNyertes)
                             {
@@ -126,7 +126,7 @@ namespace Varos.esemenyek.lotto
                         }
                         else
                         {
-                             vasarlo.BoldogsagSzint -= 1;
+                             //vasarlo.BoldogsagSzint -= 1;
                         }
                     }
 
