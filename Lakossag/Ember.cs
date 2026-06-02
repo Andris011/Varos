@@ -14,11 +14,12 @@ namespace Varos.Lakossag
     {
         private string nev;
         private double eletKor;
-        private string nem;
+        private string nem; // F-M
         private ILakohaz lakohazID;
         private bool hazasE;
         private Ember hazastars;
         private bool varandosE;
+        private bool szuletettGyermeke;
         private int varandossagSzamlalo;
         private bool halottE;
         private Bankszamla bankszamla;
@@ -30,7 +31,9 @@ namespace Varos.Lakossag
             this.nem = nem;
             this.lakohazID = lakohazID;
             this.hazasE = false;
+            this.hazastars = null;
             this.varandosE = false;
+            this.szuletettGyermeke = false;
             this.varandossagSzamlalo = 0;
             this.halottE = false;
             this.bankszamla = bankszamla;
@@ -43,6 +46,7 @@ namespace Varos.Lakossag
         public bool HazasE { get => hazasE; set => hazasE = value; }
         public Ember Hazastars { get => hazastars; set => hazastars = value; }
         public bool VarandosE { get => varandosE; set => varandosE = value; }
+        public bool SzuletettGyermeke { get => szuletettGyermeke; set => szuletettGyermeke = value; }
         public int VarandossagSzamlalo { get => varandossagSzamlalo; set => varandossagSzamlalo = value; }
         public bool HalottE { get => halottE; set => halottE = value; }
         internal Bankszamla Bankszamla { get => bankszamla; set => bankszamla = value; }
@@ -53,7 +57,10 @@ namespace Varos.Lakossag
         }
         public void VarandossagKapcsolo()
         {
-            this.varandosE = !this.varandosE;
+            if (this.nem == "F")
+            {
+                this.varandosE = !this.varandosE;
+            }
         }
         public void HazassagKotes(Ember leendoHazastars)
         {
@@ -95,6 +102,7 @@ namespace Varos.Lakossag
             {
                 VarandossagKapcsolo();
                 this.varandossagSzamlalo = 0;
+                this.szuletettGyermeke = true;
             }
         }
     }
