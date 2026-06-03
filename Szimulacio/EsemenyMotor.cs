@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,7 @@ using Varos.esemenyek.bankrablas;
 using Varos.esemenyek.foldrenges;
 using Varos.esemenyek.karacsony;
 using Varos.esemenyek.lotto;
+using Varos.esemenyek.tuntetes;
 using Varos.gazdasag.Nemzet;
 using Varos.Lakossag;
 
@@ -103,6 +104,10 @@ namespace Varos.Szimulacio
             {
                 Bankrablas bankrablas = new Bankrablas();
                 bankrablas.BankrablasInditasa(allam.Allampolgarok);
+            } else if (val == 3)
+            {
+                Tuntetes tuntetes = new Tuntetes();
+                tuntetes.TuntetesInditasa(allam.Allampolgarok);
             }
 
             if (hetekSzama%52== 0)
