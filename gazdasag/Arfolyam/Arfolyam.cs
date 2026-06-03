@@ -17,7 +17,7 @@ namespace Varos.gazdasag.Arfolyam
         private Random random = new Random(); 
         public void HetiInflacio()
         {
-            this.inflacioMutato = inflacioMutato * ((random.NextDouble()-0.5)/0.5)*0.23;
+            this.inflacioMutato = 0.75 + random.NextDouble() * 0.5; // 0.75 - 1.25 szorzo
         }
 
         public double InflacioMutato { get => inflacioMutato; set => inflacioMutato = value; }
