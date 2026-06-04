@@ -47,7 +47,7 @@ namespace Varos.Szimulacio
             string leallasUzenet = "";
             bool mindenkeppLeall = false;
             bool futAJatek = true;
-            bool lepes = false;
+            bool lepes = true;
 
             int hetenHalottak = 0;
             int hetenSzulettek = 0;
